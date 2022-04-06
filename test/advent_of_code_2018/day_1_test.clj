@@ -1,3 +1,4 @@
+
 (ns advent-of-code-2018.day-1-test
   (:require [clojure.test :refer :all]
             [advent-of-code-2018.day-1 :refer :all]))
@@ -17,7 +18,7 @@
            0))
     (is (= (part-2 ["+3" "+3" "+4" "-2" "-4"])
            10))
-    (is (= (part-2 ["-6" "+3" "+8" "-5" "-6"])
+    (is (= (part-2 ["-6" "+3" "+8" "+5" "-6"])
            5))
     (is (= (part-2 ["+7" "+7" "-2" "-7" "-4"])
            14))))

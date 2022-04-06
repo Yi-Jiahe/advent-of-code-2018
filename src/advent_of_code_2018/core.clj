@@ -16,4 +16,6 @@
   [day]
   (cond 
     (= 1) (let [input (parse-input "./resources/day_1_input.txt")]
-            (println "The resultant frequency is" (day1/part-1 input)))))
+            (do 
+              (println "The resultant frequency is" (day1/part-1 input))
+              (println "The first frequency reached twice is" (day1/part-2 input))))))
