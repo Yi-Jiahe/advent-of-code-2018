@@ -10,22 +10,30 @@
           j (range start-x (+ start-x width))]
       (list i j)))
 
-(defn get-claim-map
+(defn process-claims
   [claims]
-  (reduce (fn [claimed claim]
+  (reduce (fn [[claim-map overlaps-with] claim]
             (let [[claim-id start-x start-y width height] (parse-claim claim)]
-              (reduce (fn [claimed square]
-                        (assoc claimed square (conj (claimed square (list)) claim-id)))
-                      claimed
+              (reduce (fn [[claim-map overlaps-with] square]
+                        (let [conflicting-claims (claim-map square)]
+                          (list
+                           (assoc claim-map square (conj (claim-map square (list)) claim-id))
+                           (if (empty? conflicting-claims)
+                             (assoc overlaps-with claim-id #{})
+                             (apply assoc overlaps-with (conj () claim-id (into #{} conflicting-claims)))))))
+                      (list claim-map overlaps-with)
                       (claimed-by start-x start-y width height))))
-          {}
+          (list {} {})
           claims))
 
 (defn part-1
-  [claims]
+  [claim-map]
   (reduce (fn [contested claims-made]
             (if (> (count claims-made) 1)
               (inc contested)
               contested)) 
           0
-          (vals (get-claim-map claims))))
+          (vals claim-map)))
+
+(defn part-2
+  [overlaps-with])

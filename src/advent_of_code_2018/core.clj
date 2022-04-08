@@ -23,6 +23,6 @@
     (= day 2) (let [input (parse-input "./resources/day_2_input.txt")]
                 (println "The checksum is" (day2/part-1 input))
                 (println "The correct IDs are" (day2/part-2 input)))
-    (= day 3) (let [input (parse-input "./resources/day_3_input.txt")]
-                (println (day3/part-1 input) "square inches are within 2 or more claims"))))
+    (= day 3) (let [[claim-map overlaps-with] (day3/process-claims (parse-input "./resources/day_3_input.txt"))]
+                (println (day3/part-1 claim-map) "square inches are within 2 or more claims"))))
 
