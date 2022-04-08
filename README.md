@@ -36,7 +36,7 @@ Given a list of box-IDs, find the checksum based on the product of the number of
 
 ### Day 3: No Matter How You Slice It
 
-Given a list of rectangular claims to a sheet of fabric, find the total area of the overlapping claims (part 1).
+Given a list of rectangular claims to a sheet of fabric, find the total area of the overlapping claims (part 1), and find the only claim which does not overlap any other (part 2).
 
 ## License
 

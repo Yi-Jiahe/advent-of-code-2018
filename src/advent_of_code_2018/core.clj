@@ -1,7 +1,8 @@
 (ns advent-of-code-2018.core
   (:gen-class)
   (:require [advent-of-code-2018.day-1 :as day1]
-            [advent-of-code-2018.day-2 :as day2]))
+            [advent-of-code-2018.day-2 :as day2]
+            [advent-of-code-2018.day-3 :as day3]))
 
 (defn -main
   "I don't do a whole lot ... yet."
@@ -21,4 +22,7 @@
                 (println "The first frequency reached twice is" (day1/part-2 input)))
     (= day 2) (let [input (parse-input "./resources/day_2_input.txt")]
                 (println "The checksum is" (day2/part-1 input))
-                (println "The correct IDs are" (day2/part-2 input)))))
+                (println "The correct IDs are" (day2/part-2 input)))
+    (= day 3) (let [input (parse-input "./resources/day_3_input.txt")]
+                (println (day3/part-1 input) "square inches are within 2 or more claims"))))
+
