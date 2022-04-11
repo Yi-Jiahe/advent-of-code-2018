@@ -38,6 +38,10 @@ Given a list of box-IDs, find the checksum based on the product of the number of
 
 Given a list of rectangular claims to a sheet of fabric, find the total area of the overlapping claims (part 1), and find the only claim which does not overlap any other (part 2).
 
+### Day 4: Repose Record
+
+Given a schedule of when guards fall asleep, identify the guard who slept the most and which minute they slept the most for (part 1), 
+
 ## License
 
 Copyright © 2022 FIXME
