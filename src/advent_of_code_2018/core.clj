@@ -24,5 +24,7 @@
                 (println "The checksum is" (day2/part-1 input))
                 (println "The correct IDs are" (day2/part-2 input)))
     (= day 3) (let [[claim-map overlaps-with] (day3/process-claims (parse-input "./resources/day_3_input.txt"))]
-                (println (day3/part-1 claim-map) "square inches are within 2 or more claims"))))
+                (println "Claims Processed")
+                (println (day3/part-1 claim-map) "square inches are within 2 or more claims")
+                (println "Claim" (day3/part-2 overlaps-with) "has no overlaps"))))
 
