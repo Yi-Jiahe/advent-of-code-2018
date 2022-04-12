@@ -10,20 +10,20 @@
   (println "Hello, World!"))
 
 (defn parse-input
-  "Slurps file into a vector, seperating elements by line breaks"
-  [filepath]
-  (clojure.string/split (slurp filepath) #"\r?\n|\n"))
+  "Seperates string by line breaks"
+  [input]
+  (clojure.string/split input #"\r?\n|\n"))
 
 (defn run
   [day]
   (cond
-    (= day 1) (let [input (parse-input "./resources/day_1_input.txt")]
+    (= day 1) (let [input (parse-input (slurp "./resources/day_1_input.txt"))]
                 (println "The resultant frequency is" (day1/part-1 input))
                 (println "The first frequency reached twice is" (day1/part-2 input)))
-    (= day 2) (let [input (parse-input "./resources/day_2_input.txt")]
+    (= day 2) (let [input (parse-input (slurp "./resources/day_2_input.txt"))]
                 (println "The checksum is" (day2/part-1 input))
                 (println "The correct IDs are" (day2/part-2 input)))
-    (= day 3) (let [[claim-map overlaps-with] (day3/process-claims (parse-input "./resources/day_3_input.txt"))]
+    (= day 3) (let [[claim-map overlaps-with] (day3/process-claims (parse-input (slurp "./resources/day_3_input.txt")))]
                 (println "Claims Processed")
                 (println (day3/part-1 claim-map) "square inches are within 2 or more claims")
                 (println "Claim" (day3/part-2 overlaps-with) "has no overlaps"))))
