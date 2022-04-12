@@ -2,7 +2,8 @@
   (:gen-class)
   (:require [advent-of-code-2018.day-1 :as day1]
             [advent-of-code-2018.day-2 :as day2]
-            [advent-of-code-2018.day-3 :as day3]))
+            [advent-of-code-2018.day-3 :as day3]
+            [advent-of-code-2018.day-4 :as day4]))
 
 (defn -main
   "I don't do a whole lot ... yet."
@@ -26,5 +27,7 @@
     (= day 3) (let [[claim-map overlaps-with] (day3/process-claims (parse-input (slurp "./resources/day_3_input.txt")))]
                 (println "Claims Processed")
                 (println (day3/part-1 claim-map) "square inches are within 2 or more claims")
-                (println "Claim" (day3/part-2 overlaps-with) "has no overlaps"))))
+                (println "Claim" (day3/part-2 overlaps-with) "has no overlaps"))
+    (= day 4) (let [sorted-records (day4/sort-records-by-date (slurp "./resources/day_4_input.txt"))]
+                (run! println sorted-records))))
 

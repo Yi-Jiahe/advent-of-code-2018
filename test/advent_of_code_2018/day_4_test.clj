@@ -3,6 +3,18 @@
             [advent-of-code-2018.day-4 :refer :all]
             [advent-of-code-2018.core :refer [parse-input]]))
 
+(deftest parse-record-test
+  (testing "shift start"
+    (is (= (parse-record "[1518-11-01 00:00] Guard #10 begins shift") ["1518-11-01 00:00" "Guard #10 begins shift"])))
+  (testing "falls asleep"
+    (is (= (parse-record "[1518-11-01 00:05] falls asleep") ["1518-11-01 00:05" "falls asleep"])))
+  (testing "wakes up"
+    (is (= (parse-record "[1518-11-01 00:25] wakes up") ["1518-11-01 00:25" "wakes up"]))))
+
+(deftest parse-date-test
+  (testing "date string converted to number"
+    (is (= (parse-date "1518-11-01 00:00") 151811010000))))
+
 (def example-records 
   "[1518-11-01 00:00] Guard #10 begins shift
 [1518-11-01 00:05] falls asleep
@@ -26,3 +38,7 @@
   (testing "Example 1"
     (let [schedule (parse-input example-records)]
       (println schedule))))
+
+(deftest xxx
+  (let [sorted-records (sort-records-by-date (parse-input (slurp "./resources/day_4_input.txt")))]
+    (run! println sorted-records)))
