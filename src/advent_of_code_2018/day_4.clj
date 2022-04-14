@@ -16,10 +16,26 @@
      (parse-date (first (parse-record record))))
    records))
 
+(defn parse-message
+  [{:keys [sleeps current-sleep] :as acc} record]
+  (let [[datetime message] (parse-record record)]
+\    (cond
+      (clojure.string/starts-with? message "Guard") (let [guard (nth (first (re-seq #"#([0-9]+)" message)) 1)]
+                                                        (assoc acc
+                                                               :current-sleep
+                                                               {:guard guard :start nil}))
+      (= message "falls asleep") (assoc acc
+                                        :current-sleep
+                                        (assoc current-sleep :start datetime))
+      (= message "wakes up") (assoc acc
+                                    :sleeps
+                                    (assoc sleeps 
+                                           (current-sleep :guard) 
+                                           (conj (sleeps (current-sleep :guard) []) [(current-sleep :start) datetime]))))))
+
 (defn part-1
-  [sorted-records]
-  (reduce (fn 
-            [results-map [datetime message]] 
-            results-map)
-          {}
-          sorted-records))
+  [
+   {:sleeps {}sorted-records]
+  (reduce
+   parse-message :current-sleep {:guard nil :start nil}}
+   sorted-records))

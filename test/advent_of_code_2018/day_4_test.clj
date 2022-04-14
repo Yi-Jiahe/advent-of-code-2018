@@ -36,9 +36,6 @@
 
 (deftest end-to-end-test
   (testing "Example 1"
-    (let [schedule (parse-input example-records)]
-      (println schedule))))
-
-(deftest xxx
-  (let [sorted-records (sort-records-by-date (parse-input (slurp "./resources/day_4_input.txt")))]
-    (run! println sorted-records)))
+    (let [sorted-records (sort-records-by-date (parse-input example-records))]
+      (run! println sorted-records)
+      (println (part-1 sorted-records)))))
