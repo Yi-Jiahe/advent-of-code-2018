@@ -10,8 +10,8 @@ if [ -f "src/advent_of_code_2018/day_${day}.clj" ]; then
   exit 1
 fi
 
-cp resources/day_n.clj "src/advent_of_code_2018/day_${day}.clj"
+cp resources/day_n.txt "src/advent_of_code_2018/day_${day}.clj"
 sed -i "s/DAY/${day}/g" "src/advent_of_code_2018/day_${day}.clj"
-cp resources/day_n_test.clj "test/advent_of_code_2018/day_${day}_test.clj"
+cp resources/day_n_test.txt "test/advent_of_code_2018/day_${day}_test.clj"
 sed -i "s/DAY/${day}/g" "test/advent_of_code_2018/day_${day}_test.clj"
 touch "resources/day_${day}_input.txt"
