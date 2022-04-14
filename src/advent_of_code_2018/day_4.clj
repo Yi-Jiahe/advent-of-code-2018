@@ -33,9 +33,23 @@
                                            (current-sleep :guard) 
                                            (conj (sleeps (current-sleep :guard) []) [(current-sleep :start) datetime]))))))
 
+(defn total-minutes-asleep
+  [sleeps]
+  (reduce (fn [time-sleeping [guard sleep-times]]
+            (assoc time-sleeping guard (reduce
+                                        (fn [time-asleep [start end]]
+                                          (+ time-asleep (reduce - (map parse-date [end start]))))
+                                        0
+                                        sleep-times)))
+          {}
+          sleeps))
+
 (defn part-1
   [sorted-records]
-  (reduce
-   parse-message 
-   {:sleeps {}:current-sleep {:guard nil :start nil}}
-   sorted-records))
+  (let [sleeps ((reduce
+                 parse-message
+                 {:sleeps {} :current-sleep {:guard nil :start nil}}
+                 sorted-records)
+                :sleeps)]
+    (let [sleepiest-guard (key (apply max-key val (total-minutes-asleep sleeps)))]
+      sleepiest-guard)))

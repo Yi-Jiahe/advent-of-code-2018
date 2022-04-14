@@ -37,5 +37,5 @@
 (deftest end-to-end-test
   (testing "Example 1"
     (let [sorted-records (sort-records-by-date (parse-input example-records))]
-      (run! println sorted-records)
+      ;; (run! println sorted-records)
       (println (part-1 sorted-records)))))
