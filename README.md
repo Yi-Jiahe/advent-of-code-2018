@@ -8,21 +8,11 @@ Download from http://github.com/Yi-Jiahe/advent-of-code-2018.
 
 ## Usage
 
-FIXME: explanation
+Run `lein repl` to start the repl, then `(run day)` where day is an integer between 1-25 to get the results based on the input in resources/day_i_input.txt.
 
-    $ java -jar advent-of-code-2018-0.1.0-standalone.jar [args]
+Run `lein test` to test the solutions.
 
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
+Run `scripts/new_day.sh day` with an integer between 1-25 to generate the boilerplate from the templates.
 
 ## Days
 
