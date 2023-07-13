@@ -15,6 +15,10 @@
   (testing "date string converted to number"
     (is (= (parse-date "1518-11-01 00:00") 151811010000))))
 
+(deftest get-minute-test
+  (testing "get minute from datetime string"
+    (is (= (get-minute "1518-11-01 00:05") 5))))
+
 (def example-records 
   "[1518-11-01 00:00] Guard #10 begins shift
 [1518-11-01 00:05] falls asleep
@@ -33,6 +37,18 @@
 [1518-11-05 00:03] Guard #99 begins shift
 [1518-11-05 00:45] falls asleep
 [1518-11-05 00:55] wakes up")
+
+(def sorted-records (sort-records-by-date (parse-input example-records)))
+
+(def sleeps (compile-sleeps sorted-records))
+
+(deftest sleepist-guard-test
+  (testing "Find sleepiest guard"
+    (is (= (find-sleepiest-guard sleeps) "10"))))
+
+(deftest sleepiest-minute-test
+  (testing "Find sleepiest minute for guard 10"
+    (is (= (find-sleepiest-minute-by-guard sleeps "10") 24))))
 
 (deftest end-to-end-test
   (testing "Example 1"

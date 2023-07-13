@@ -29,5 +29,5 @@
                 (println (day3/part-1 claim-map) "square inches are within 2 or more claims")
                 (println "Claim" (day3/part-2 overlaps-with) "has no overlaps"))
     (= day 4) (let [sorted-records (day4/sort-records-by-date (slurp "./resources/day_4_input.txt"))]
-                (run! println sorted-records))))
+                (println (day4/part-1 sorted-records)))))
 

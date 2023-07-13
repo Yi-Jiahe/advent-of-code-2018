@@ -5,6 +5,11 @@
   [datetime]
   (clojure.edn/read-string (clojure.string/replace datetime #"[- :]" "")))
 
+(defn get-minute
+  "Returns minute from datetimes"
+  [datetime]
+  (Integer/parseInt (second (clojure.string/split datetime #":"))))
+
 (defn parse-record
   "Splits a record (line of the input) into a list containing the date and message component"
   [record]
@@ -19,7 +24,7 @@
    records))
 
 (defn compile-sleeps
-  "Parses the sorted records into a list of sleeps in the form [guard start end]"
+  "Parses the sorted records into a map of sleeps in the form {guard [[start end] ...]}"
   [sorted-records]
   ((reduce
     (fn [{:keys [sleeps current-sleep] :as acc} record]
@@ -54,8 +59,31 @@
    {}
    sleeps))
 
+(defn compile-times-slept-per-minute-by-guard
+  "Returns a map of how many times a guard was asleep for each minute from the list of sleeps"
+  [sleeps guard]
+  (reduce
+   (fn [acc [start end]]
+     (reduce (fn [acc minute]
+               (if (contains? acc minute)
+                 (assoc acc minute (inc (acc minute)))
+                        (assoc acc minute 1)))
+             acc
+             (apply range (map get-minute [start end]))))
+   {}
+    (sleeps guard)))
+
+(defn find-sleepiest-guard
+  [sleeps]
+  (key (apply max-key val (compile-time-slept-by-guards sleeps))))
+
+(defn find-sleepiest-minute-by-guard
+  [sleeps guard]
+  (key (apply max-key val (compile-times-slept-per-minute-by-guard sleeps guard))))
+
 (defn part-1
   [sorted-records]
   (let [sleeps (compile-sleeps sorted-records)
-        sleepiest-guard (key (apply max-key val (compile-time-slept-by-guards sleeps)))]
-    sleepiest-guard))
+        sleepiest-guard (find-sleepiest-guard sleeps)
+        sleepiest-minute (find-sleepiest-minute-by-guard sleeps sleepiest-guard)]
+    (* (Integer/parseInt sleepiest-guard) sleepiest-minute)))
