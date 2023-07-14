@@ -59,9 +59,9 @@
    {}
    sleeps))
 
-(defn compile-times-slept-per-minute-by-guard
+(defn compile-times-slept-per-minute
   "Returns a map of how many times a guard was asleep for each minute from the list of sleeps"
-  [sleeps guard]
+  [sleeps-for-guard]
   (reduce
    (fn [acc [start end]]
      (reduce (fn [acc minute]
@@ -71,7 +71,7 @@
              acc
              (apply range (map get-minute [start end]))))
    {}
-    (sleeps guard)))
+   sleeps-for-guard))
 
 (defn find-sleepiest-guard
   [sleeps]
@@ -79,7 +79,7 @@
 
 (defn find-sleepiest-minute-by-guard
   [sleeps guard]
-  (key (apply max-key val (compile-times-slept-per-minute-by-guard sleeps guard))))
+  (key (apply max-key val (compile-times-slept-per-minute (sleeps guard)))))
 
 (defn setup
   "Transforms input into sleeps for part 1 and 2 to process"
@@ -94,4 +94,11 @@
 
 (defn part-2
   [sleeps]
-  ())
+  (let [guards-with-most-slept-minute (reduce
+                                       (fn [acc [guard sleeps-for-guard]]
+                                         (conj acc (flatten [guard (apply max-key val (compile-times-slept-per-minute sleeps-for-guard))])))
+                                       []
+                                       sleeps)
+        [guard minute _] (apply max-key #(nth % 2) guards-with-most-slept-minute)]
+    (* (Integer/parseInt guard) minute)))
+  
