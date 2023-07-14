@@ -19,7 +19,7 @@
   (testing "get minute from datetime string"
     (is (= (get-minute "1518-11-01 00:05") 5))))
 
-(def example-records 
+(def example-records
   "[1518-11-01 00:00] Guard #10 begins shift
 [1518-11-01 00:05] falls asleep
 [1518-11-01 00:25] wakes up
@@ -52,5 +52,7 @@
 
 (deftest end-to-end-test
   (testing "Example 1"
-    (let [sorted-records (sort-records-by-date (parse-input example-records))]
-      (is (= (part-1 sorted-records) 240)))))
+    (is (= (part-1 sorted-records) 240))))
+
+(testing "Part 2"
+  (is (= (part-2 sorted-records) 4455)))
