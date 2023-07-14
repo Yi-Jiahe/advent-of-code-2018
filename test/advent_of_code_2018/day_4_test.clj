@@ -38,9 +38,7 @@
 [1518-11-05 00:45] falls asleep
 [1518-11-05 00:55] wakes up")
 
-(def sorted-records (sort-records-by-date (parse-input example-records)))
-
-(def sleeps (compile-sleeps sorted-records))
+(def sleeps (setup (parse-input example-records)))
 
 (deftest sleepist-guard-test
   (testing "Find sleepiest guard"
@@ -52,7 +50,7 @@
 
 (deftest end-to-end-test
   (testing "Example 1"
-    (is (= (part-1 sorted-records) 240))))
+    (is (= (part-1 sleeps) 240))))
 
 (testing "Part 2"
-  (is (= (part-2 sorted-records) 4455)))
+  (is (= (part-2 sleeps) 4455)))

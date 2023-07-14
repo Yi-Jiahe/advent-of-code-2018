@@ -81,9 +81,17 @@
   [sleeps guard]
   (key (apply max-key val (compile-times-slept-per-minute-by-guard sleeps guard))))
 
+(defn setup
+  "Transforms input into sleeps for part 1 and 2 to process"
+  [input]
+  (compile-sleeps (sort-records-by-date input)))
+
 (defn part-1
-  [sorted-records]
-  (let [sleeps (compile-sleeps sorted-records)
-        sleepiest-guard (find-sleepiest-guard sleeps)
+  [sleeps]
+  (let [sleepiest-guard (find-sleepiest-guard sleeps)
         sleepiest-minute (find-sleepiest-minute-by-guard sleeps sleepiest-guard)]
     (* (Integer/parseInt sleepiest-guard) sleepiest-minute)))
+
+(defn part-2
+  [sleeps]
+  ())
