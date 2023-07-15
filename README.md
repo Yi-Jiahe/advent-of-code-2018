@@ -8,7 +8,7 @@ Download from http://github.com/Yi-Jiahe/advent-of-code-2018.
 
 ## Usage
 
-Run `lein repl` to start the repl, then `(run day)` where day is an integer between 1-25 to get the results based on the input in resources/day_i_input.txt.
+Run `lein run <day>` where day is an integer between 1-25 to get the results based on the input in resources/day_i_input.txt. Alternatively, run `lein repl` to start the repl, then `(run <day>)`
 
 Run `lein test` to test the solutions.
 
