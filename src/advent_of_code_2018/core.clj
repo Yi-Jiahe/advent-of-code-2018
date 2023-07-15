@@ -3,7 +3,8 @@
   (:require [advent-of-code-2018.day-1 :as day1]
             [advent-of-code-2018.day-2 :as day2]
             [advent-of-code-2018.day-3 :as day3]
-            [advent-of-code-2018.day-4 :as day4]))
+            [advent-of-code-2018.day-4 :as day4]
+            [advent-of-code-2018.day-5 :as day5]))
 
 (defn -main
   "I don't do a whole lot ... yet."
@@ -30,5 +31,8 @@
                 (println "Claim" (day3/part-2 overlaps-with) "has no overlaps"))
     (= day 4) (let [sleeps (day4/setup (parse-input (slurp "./resources/day_4_input.txt")))]
                 (println "Part 1 Answer: " (day4/part-1 sleeps))
-                (println "Part 2 Answer: " (day4/part-2 sleeps)))))
+                (println "Part 2 Answer: " (day4/part-2 sleeps)))
+    (= day 5) (let [input (parse-input (slurp "./resources/day_5_input.txt"))]
+                (println "The lenght of the final chain is " (day5/part-1 input)))))
+          
 

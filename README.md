@@ -34,7 +34,7 @@ Given a schedule of when guards fall asleep, identify the guard who slept the mo
 
 ### Day 5: Alchemical Reduction
 
-Given a polymer chain represented by upper and lower case characters, determine the resultant chain after a series of chain reactions between adjacent upper and lower characters of the same letter (part 1).
+Given a polymer chain represented by upper and lower case characters, determine the length of the resultant chain after a series of chain reactions between adjacent upper and lower characters of the same letter (part 1).
 
 ## License
 
