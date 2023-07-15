@@ -32,6 +32,10 @@ Given a list of rectangular claims to a sheet of fabric, find the total area of 
 
 Given a schedule of when guards fall asleep, identify the guard who slept the most and which minute they slept the most for (part 1), then identify the minute each guard slept the most for and how many times they were asleep that minute. The answer for part two is the number of the guard who slept the most for a particular minute times the minute.
 
+### Day 5: Alchemical Reduction
+
+Given a polymer chain represented by upper and lower case characters, determine the resultant chain after a series of chain reactions between adjacent upper and lower characters of the same letter (part 1).
+
 ## License
 
 Copyright © 2022 FIXME
