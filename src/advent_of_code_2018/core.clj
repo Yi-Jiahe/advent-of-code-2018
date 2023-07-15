@@ -7,7 +7,7 @@
             [advent-of-code-2018.day-5 :as day5]))
 
 (defn parse-input
-  "Seperates string by line breaks"
+  "Returns a list of whitespace trimed strings obtained from seperating the input string by line breaks"
   [input]
   (map clojure.string/trim (clojure.string/split input #"\r?\n|\n")))
 
