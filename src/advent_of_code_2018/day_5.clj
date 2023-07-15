@@ -11,5 +11,7 @@
   (count (loop [previous-chain chain
                 reacted-chain (react chain)]
            (if (= reacted-chain previous-chain)
-             reacted-chain
+             (do
+               (println reacted-chain)
+               reacted-chain)
              (recur reacted-chain (react reacted-chain))))))

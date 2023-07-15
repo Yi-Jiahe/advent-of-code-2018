@@ -6,15 +6,10 @@
             [advent-of-code-2018.day-4 :as day4]
             [advent-of-code-2018.day-5 :as day5]))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
-
 (defn parse-input
   "Seperates string by line breaks"
   [input]
-  (clojure.string/split input #"\r?\n|\n"))
+  (map clojure.string/trim (clojure.string/split input #"\r?\n|\n")))
 
 (defn run
   [day]
@@ -33,6 +28,8 @@
                 (println "Part 1 Answer: " (day4/part-1 sleeps))
                 (println "Part 2 Answer: " (day4/part-2 sleeps)))
     (= day 5) (let [input (parse-input (slurp "./resources/day_5_input.txt"))]
-                (println "The lenght of the final chain is " (day5/part-1 input)))))
+                (println "The length of the final chain is " (day5/part-1 (first input))))))
           
-
+(defn -main
+  [& args]
+  (run (Integer/parseInt (first args))))

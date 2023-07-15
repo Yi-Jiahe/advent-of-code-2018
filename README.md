@@ -36,6 +36,8 @@ Given a schedule of when guards fall asleep, identify the guard who slept the mo
 
 Given a polymer chain represented by upper and lower case characters, determine the length of the resultant chain after a series of chain reactions between adjacent upper and lower characters of the same letter (part 1).
 
+Remember to not to count whitespace (newline characters) in the input.
+
 ## License
 
 Copyright © 2022 FIXME
