@@ -27,8 +27,9 @@
     (= day 4) (let [sleeps (day4/setup (parse-input (slurp "./resources/day_4_input.txt")))]
                 (println "Part 1 Answer: " (day4/part-1 sleeps))
                 (println "Part 2 Answer: " (day4/part-2 sleeps)))
-    (= day 5) (let [input (parse-input (slurp "./resources/day_5_input.txt"))]
-                (println "The length of the final chain is " (day5/part-1 (first input))))))
+    (= day 5) (let [input (first (parse-input (slurp "./resources/day_5_input.txt")))]
+                (println "The length of the final chain is " (day5/part-1 input))
+                (println "The length of the shortest polymer is" (day5/part-2 input)))))
           
 (defn -main
   [& args]

@@ -18,3 +18,7 @@
     (is (= (part-1 "abAB") 4))
     (is (= (part-1 "aabAAB") 6))
     (is (= (part-1 "dabAcCaCBAcCcaDA") 10))))
+
+(deftest part-2-test
+  (testing "Part 2" 
+    (is (= (part-2 "dabAcCaCBAcCcaDA") 4))))
